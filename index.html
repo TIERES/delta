@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title></title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css"/>
+    <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css"/>
+    <link rel="stylesheet" href="app/css/media-queries.css"/>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+    <script src="app/js/delta-config.js"></script>
+    <script src="app/js/index-controller.js"></script>
+    <script src="arquitetura/service/alert-service.js"></script>
+    <script src="arquitetura/filter/maiusculo.js"></script>
+    <script src="arquitetura/filter/minusculo.js"></script>
+</head>
+<body ng-app="delta">
+    <!--div ng-controller="IndexController">
+        <input type="text" ng-model="nome"/>
+        <button ng-click="testeFuncao()">Executar</button>
+        <span ng-style="myStyle">Gutieres</span>
+    </--div-->
+    <div ng-controller="IndexController" class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Cadastro de Pessoa - {{ultimaData}}
+                </div>
+                <div class="panel-body">
+                    <form name="formPessoa"
+                          novalidate
+                          ng-submit="salvar()">
+                        <div class="row">
+
+                            <div class="col-sm-3">
+                                <div class="form-group"
+                                     ng-class="{'has-error':formPessoa.nome.$invalid && formPessoa.nome.$touched}">
+                                    <label class="control-label">Nome</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           ng-model="entidade.nome"
+                                           name="nome"
+                                           ng-minlength="3"
+                                           ng-maxlength="20"
+                                           required/>
+                                    <div class="help-block" ng-messages="formPessoa.nome.$error"
+                                            ng-if="formPessoa.nome.$invalid && formPessoa.nome.$touched">
+                                        <div ng-messages-include="app/template/messages.html"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group"
+                                     ng-class="{'has-error':formPessoa.email.$invalid}"   >
+                                    <label class="control-label">Email</label>
+                                    <input type="email"
+                                           class="form-control"
+                                           ng-model="entidade.email"
+                                           name="email"/>
+                                    <div class="help-block" ng-messages="formPessoa.email.$error">
+                                        <div ng-messages-include="app/template/messages.html"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group"
+                                     ng-class="{'has-error':formPessoa.nascimento.$invalid}"   >
+                                    <label class="control-label">Nascimento</label>
+                                    <input type="date"
+                                           class="form-control"
+                                           name="nascimento"
+                                           ng-model="entidade.nascimento"/>
+                                    <div class="help-block" ng-messages="formPessoa.nascimento.$error">
+                                        <div ng-messages-include="app/template/messages.html"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group" >
+                                    <label class="control-label">Cor</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           ng-model="entidade.cor"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <button class="btn btn-primary"
+                                        type="submit">
+                                    <i class="fa fa-save"></i>
+                                    Salvar
+                                </button>
+                                <button class="btn btn-default" ng-click="limpar()" type="button">
+                                    <i class="fa fa-eraser"></i>
+                                    Limpar
+                                </button>
+                                <button class="btn btn-danger" ng-click="excluir(entidade)" type="button">
+                                    <i class="fa fa-trash"></i>
+                                    Excluir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Lista de Pessoas</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div ui-grid="gridOptions" style="height: 200px">
+                    <!--table class="table">
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Nascimento</th>
+                        </tr>
+                        <tr ng-repeat="pessoa in listaDePessoas">
+                            <!-- "::" Binding apenas uma vez.>
+                            <td ng-bind="::pessoa.nome | maiusculo"></td>
+                            <td ng-bind="::pessoa.email | minusculo"></td>
+                            <td ng-bind="::pessoa.nascimento | date:'dd/MM/yyyy'"></td>
+                        </tr>
+                    </table-->
+                </div>
+            </div>
+    </div>
+</body>
+</html>

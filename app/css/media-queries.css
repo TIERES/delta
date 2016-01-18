@@ -1,0 +1,17 @@
+@media screen and (max-width: 768px) {
+    .container{
+        background-color: #a6e1ec;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .container{
+        background-color: #2b542c;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+    .container{
+        background-color: #761c19;
+    }
+}
