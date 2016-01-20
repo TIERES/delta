@@ -1,0 +1,85 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Cadastro de Pessoa - {{ultimaData}}
+    </div>
+    <div class="panel-body">
+        <form name="formPessoa"
+              novalidate
+              ng-submit="salvarSemValidar()">
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <md-input-container>
+                        <label>Nome</label>
+                        <input ng-model="entidade.nome">
+                    </md-input-container>
+                </div>
+
+                <div class="col-sm-3">
+                    <md-input-container class="md-block">
+                        <label>Email</label>
+                        <input name="email" ng-model="entidade.email"
+                               required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+                    </md-input-container>
+                    <!--div class="form-group"
+                         ng-class="{'has-error':formPessoa.email.$invalid}"   >
+                        <label class="control-label">Email</label>
+                        <input type="email"
+                               class="form-control"
+                               ng-model="entidade.email"
+                               name="email"/>
+                        <div class="help-block" ng-messages="formPessoa.email.$error">
+                            <div ng-messages-include="app/template/messages.html"></div>
+                        </div>
+                    </div-->
+                </div>
+
+                <div class="col-sm-3">
+                    <md-datepicker ng-model="entidade.nascimento"
+                                   md-placeholder="Nascimento">
+                    </md-datepicker>
+                    <!--div class="form-group"
+                         ng-class="{'has-error':formPessoa.nascimento.$invalid}"   >
+                        <label class="control-label">Nascimento</label>
+                        <input type="date"
+                               class="form-control"
+                               name="nascimento"
+                               ng-model="entidade.nascimento"/>
+                        <div class="help-block" ng-messages="formPessoa.nascimento.$error">
+                            <div ng-messages-include="app/template/messages.html"></div>
+                        </div>
+                    </div-->
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group" >
+                        <label class="control-label">Cor</label>
+                        <input type="text"
+                               class="form-control"
+                               ng-model="entidade.cor"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary"
+                                type="submit">
+                            <i class="fa fa-save"></i>
+                            Salvar
+                        </button>
+                        <button class="btn btn-default" ng-click="limpar()" type="button">
+                            <i class="fa fa-eraser"></i>
+                            Limpar
+                        </button>
+                        <button class="btn btn-danger" ng-click="excluir(entidade)" type="button">
+                            <i class="fa fa-trash"></i>
+                            Excluir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

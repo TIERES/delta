@@ -15,6 +15,7 @@ function IndexController($scope, $timeout, AlertService, $filter){
     $scope.ultimaData = '';
     $scope.onClickEditar = onClickEditar;
     $scope.getRowStyle = getRowStyle;
+    $scope.salvarSemValidar = salvarSemValidar;
 
     iniciar();
 
@@ -48,6 +49,12 @@ function IndexController($scope, $timeout, AlertService, $filter){
 
     function testeFuncao(){
         alert('Ola ' + $scope.nome);
+    }
+
+    function salvarSemValidar(){
+        $scope.listaDePessoas.push($scope.entidade);
+        AlertService.showSuccess('Registro inserido com sucesso','OK');
+        limpar();
     }
 
     function salvar(){
